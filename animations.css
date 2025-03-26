@@ -1,0 +1,125 @@
+/* animations.css - Additional animations and effects for portfolio */
+
+/* Enhanced animations for smoother website experience */
+
+/* Smooth fade-in animation for sections */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Reveal animation for sections */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth hover transitions for all interactive elements */
+a, button, .details-container, .icon {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Unified hover effect for all boxes */
+.details-container {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.details-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Project card specific hover effects */
+.project-card-transition {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card-transition:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Skills section hover effect */
+.skills-sub-title:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* Experience section specific hover */
+.experience-details-container .details-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover animation */
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Typing animation for hero section */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #555 }
+}
+
+.typing-animation {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.1em;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret 0.75s step-end infinite;
+}
+
+/* Smooth image zoom on hover */
+.section__pic-container img {
+    transition: transform 0.5s ease;
+}
+
+.section__pic-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Smooth background transitions */
+body {
+    transition: background-color 0.5s ease;
+}
+
+/* Form input focus effects */
+.form-group input:focus,
+.form-group textarea:focus {
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+
+/* Section transitions */
+section {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Social icons hover effect */
+#socials-container img {
+    transition: transform 0.3s ease;
+}
+
+#socials-container img:hover {
+    transform: translateY(-5px);
+}
