@@ -1,37 +1,44 @@
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    const form = this;
     const formMessage = document.getElementById('form-message');
-    const buttonText = form.querySelector('.button-text');
-    const loadingSpinner = form.querySelector('.loading-spinner');
+    const loadingSpinner = document.querySelector('.loading-spinner');
+    const buttonText = document.querySelector('.button-text');
     
     // Show loading state
-    buttonText.style.display = 'none';
     loadingSpinner.style.display = 'inline-block';
+    buttonText.style.display = 'none';
     
-    fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form)
-    })
-    .then(response => response.json())
-    .then(data => {
-        formMessage.textContent = data.message;
-        formMessage.style.color = data.status === 'success' ? '#4CAF50' : '#f44336';
+    try {
+        const response = await fetch('/send_mail.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            })
+        });
         
-        if (data.status === 'success') {
-            form.reset();
+        const data = await response.json();
+        
+        formMessage.textContent = data.message;
+        formMessage.style.color = data.success ? 'green' : 'red';
+        
+        if (data.success) {
+            this.reset();
         }
-    })
-    .catch(error => {
-        formMessage.textContent = 'An error occurred. Please try again.';
-        formMessage.style.color = '#f44336';
-    })
-    .finally(() => {
+    } catch (error) {
+        formMessage.textContent = 'An error occurred. Please try again later.';
+        formMessage.style.color = 'red';
+    } finally {
         // Hide loading state
-        buttonText.style.display = 'inline-block';
         loadingSpinner.style.display = 'none';
-    });
+        buttonText.style.display = 'inline-block';
+    }
 });
 
 // Reveal elements on scroll
