@@ -150,26 +150,81 @@ a:hover {
 
 /* SECTIONS */
 
+/* SECTIONS */
 section {
-  padding-top: 0; /* Removed padding completely */
-  height: 90vh; /* Reduced from 96vh to 90vh */
+  padding-top: 2rem;  /* Added some padding */
+  height: auto;       /* Changed from 90vh to auto */
   margin: 0 10rem;
   box-sizing: border-box;
   min-height: fit-content;
 }
 
-.section-container {
-  display: flex;
+#about {
+  position: relative;
+  margin-top: -2rem;  /* Negative margin to pull content up */
 }
 
+.about-containers {
+  gap: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;  /* Reduced from 2rem */
+}
 
+.section-container {
+  display: flex;
+  margin-top: 1rem;  /* Added margin-top */
+}
+
+/* Adjust spacing for mobile */
+@media screen and (max-width: 768px) {
+  section {
+    padding-top: 1rem;
+    margin: 0 1rem;
+  }
+
+  #profile {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+    padding-top: 10vh;
+    margin: 0;
+    position: relative;
+  }
+
+  .section__pic-container {
+    height: 200px;
+    width: 200px;
+    margin: 0 auto 3rem auto; /* Increased bottom margin to 3rem */
+  }
+
+  /* Style the main intro text with more space */
+  .section__text {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    clear: both; /* Ensure text starts on a new "line" */
+  }
+
+  /* Adjust spacing for the name and title */
+  #profile .title {
+    font-size: 2.5rem;
+    margin: 1rem 0; /* Increased top and bottom margins */
+  }
+
+  .section__text__p2 {
+    font-size: 1.5rem;
+    margin: 1rem 0; /* Increased top and bottom margins */
+  }
+}
 
 #profile {
   display: flex;
   justify-content: center;
   align-items: center; /* Added to ensure vertical centering */
   gap: 5rem;
-  height: 90vh; /* Increased from 80vh to 90vh to use more vertical space */
+  height: 70vh; /* Increased from 80vh to 90vh to use more vertical space */
   margin-top: -2vh; /* Negative margin to pull content up */
 }
 
@@ -191,29 +246,8 @@ section {
   font-weight: 600;
 }
 
-/* Center section titles and intro text */
 .section__text__p1 {
-    text-align: center;
-    width: 100%;
-    display: block;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.title {
-    text-align: center;
-    width: 100%;
-    margin: 0 auto 2rem auto;
-    font-size: 2.5rem;
-    font-weight: 600;
-}
-
-/* Adjust section container for better alignment */
-.section-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
+  text-align: center;
 }
 
 .section__text__p2 {
@@ -221,21 +255,17 @@ section {
   margin-bottom: 1rem;
 }
 
-/* Update the title styling */
 .title {
-    font-size: 2rem;
-    text-align: center;
-    letter-spacing: -0.05em; /* Reduce space between characters */
-    font-weight: 400;
-    margin: 0 auto 2rem auto;
-    width: 100%;
+  font-size: 3rem;
+  text-align: center;
+  letter-spacing: normal;  /* Added this line to remove extra spacing */
 }
 
-/* Specific styling for profile section title */
+/* For the profile section title specifically */
 #profile .title {
-    letter-spacing: -0.05em;
-    font-size: 3.5rem; /* Made slightly larger for better impact */
-    margin-bottom: 1rem;
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;  /* Slightly tighter spacing for the name */
+  font-weight: 600;
 }
 
 #socials-container {
@@ -595,53 +625,11 @@ footer p {
   align-items: center;
 }
 
-/* Contact section styling */
+/* Contact Form Styles */
 .contact-form-container {
-    background: white;
-    border-radius: 2rem;
-    border: rgb(163, 163, 163) 0.1rem solid;
-    padding: 3.5rem;
-    margin: 2rem auto;
-    max-width: 800px;
-    width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.form-group {
-    margin-bottom: 2rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid rgb(163, 163, 163);
-    border-radius: 1rem;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-}
-
-.form-group textarea {
-    min-height: 200px;
-    resize: vertical;
-}
-
-/* Contact info container */
-.contact-info-upper-container {
-    background: white;
-    border-radius: 2rem;
-    border: rgb(163, 163, 163) 0.1rem solid;
-    padding: 2.5rem;
-    margin: 2rem auto;
     max-width: 600px;
-    width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.contact-info-upper-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    margin: 2rem auto;
+    padding: 2rem;
 }
 
 .form-group {
@@ -652,9 +640,11 @@ footer p {
 .form-group textarea {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid rgb(163, 163, 163);
-    border-radius: 0.8rem;
-    font-family: "Poppins", sans-serif;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--container-bg);
+    color: var(--primary-color);
+    font-family: inherit;
 }
 
 .form-group textarea {
@@ -666,4 +656,96 @@ footer p {
 .form-group textarea:focus {
     outline: none;
     border-color: #555;
+}
+
+/* Career Objective styling */
+.career-objective {
+    background-color: rgba(245, 245, 245, 0.8);
+    border-left: 4px solid #333;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.career-objective h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.career-objective p {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+    .career-objective {
+        padding: 0.8rem 1rem;
+    }
+    
+    .career-objective h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* About section title styling */
+.about-title-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Experience and Education cards */
+.info-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 300px;
+}
+
+.info-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.info-card p {
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    .info-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-card {
+        width: 100%;
+        max-width: none;
+    }
+
+    .about-title {
+        font-size: 2rem;
+    }
 }
