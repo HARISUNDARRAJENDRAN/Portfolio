@@ -79,3 +79,52 @@ document.addEventListener('DOMContentLoaded', function() {
     // Trigger initial reveal
     setTimeout(revealOnScroll, 300);
 });
+
+
+function toggleMenu() {
+    const menuLinks = document.querySelector('.menu-links');
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    menuLinks.classList.toggle('open');
+    hamburgerIcon.classList.toggle('open');
+}
+
+// Certificate Modal Functions
+function openCertificateModal(imgSrc, title) {
+    const modal = document.getElementById('certificateModal');
+    const modalImg = document.getElementById('certificateModalImg');
+    const caption = document.getElementById('certificateModalCaption');
+    
+    modal.style.display = 'block';
+    modalImg.src = imgSrc;
+    caption.innerHTML = title;
+    
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCertificateModal() {
+    const modal = document.getElementById('certificateModal');
+    modal.style.display = 'none';
+    
+    // Re-enable body scroll
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside the image
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('certificateModal');
+    if (modal) {
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeCertificateModal();
+            }
+        });
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeCertificateModal();
+        }
+    });
+});

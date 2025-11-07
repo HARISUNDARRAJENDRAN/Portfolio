@@ -66,20 +66,18 @@ a:hover {
   cursor: default;
 }
 
-/* Remove or hide the portfolio navigation elements */
-.portfolio-nav {
-  display: none; /* This hides the entire portfolio nav */
+/* HAMBURGER MENU */
+
+#hamburger-nav {
+  display: none;
 }
 
-.portfolio-menu {
-  display: none; /* This hides the menu container */
+.hamburger-menu {
+  position: relative;
+  display: inline-block;
 }
 
-.portfolio-icon {
-  display: none; /* This hides the three-line icon */
-}
-
-.portfolio-icon {
+.hamburger-icon {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,14 +86,14 @@ a:hover {
   cursor: pointer;
 }
 
-.portfolio-icon span {
+.hamburger-icon span {
   width: 100%;
   height: 2px;
   background-color: black;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-.portfolio-links {
+.menu-links {
   position: absolute;
   top: 100%;
   right: 0;
@@ -103,73 +101,119 @@ a:hover {
   width: fit-content;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
+  list-style: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.portfolio-links a {
+.menu-links a {
   display: block;
   padding: 10px;
   text-align: center;
   font-size: 1.5rem;
   color: black;
   text-decoration: none;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-.portfolio-links li {
+.menu-links li {
   list-style: none;
 }
 
-.portfolio-links.open {
-  max-height: 300px;
+.menu-links.open {
+  max-height: 400px;
 }
 
-.portfolio-icon.open span:first-child {
+.hamburger-icon.open span:first-child {
   transform: rotate(45deg) translate(10px, 5px);
 }
 
-.portfolio-icon.open span:nth-child(2) {
+.hamburger-icon.open span:nth-child(2) {
   opacity: 0;
 }
 
-.portfolio-icon.open span:last-child {
+.hamburger-icon.open span:last-child {
   transform: rotate(-45deg) translate(10px, -5px);
-}
-
-.portfolio-icon span:first-child {
-  transform: none;
-}
-
-.portfolio-icon span:first-child {
-  opacity: 1;
-}
-
-.portfolio-icon span:first-child {
-  transform: none;
 }
 
 /* SECTIONS */
 
+/* SECTIONS */
 section {
-  padding-top: 0; /* Removed padding completely */
-  height: 90vh; /* Reduced from 96vh to 90vh */
+  padding-top: 2rem;  /* Added some padding */
+  height: auto;       /* Changed from 90vh to auto */
   margin: 0 10rem;
   box-sizing: border-box;
   min-height: fit-content;
 }
 
-.section-container {
-  display: flex;
+#about {
+  position: relative;
+  margin-top: -2rem;  /* Negative margin to pull content up */
 }
 
+.about-containers {
+  gap: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;  /* Reduced from 2rem */
+}
 
+.section-container {
+  display: flex;
+  margin-top: 1rem;  /* Added margin-top */
+}
+
+/* Adjust spacing for mobile */
+@media screen and (max-width: 768px) {
+  section {
+    padding-top: 1rem;
+    margin: 0 1rem;
+  }
+
+  #profile {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+    padding-top: 10vh;
+    margin: 0;
+    position: relative;
+  }
+
+  .section__pic-container {
+    height: 200px;
+    width: 200px;
+    margin: 0 auto 3rem auto; /* Increased bottom margin to 3rem */
+  }
+
+  /* Style the main intro text with more space */
+  .section__text {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    clear: both; /* Ensure text starts on a new "line" */
+  }
+
+  /* Adjust spacing for the name and title */
+  #profile .title {
+    font-size: 2.5rem;
+    margin: 1rem 0; /* Increased top and bottom margins */
+  }
+
+  .section__text__p2 {
+    font-size: 1.5rem;
+    margin: 1rem 0; /* Increased top and bottom margins */
+  }
+}
 
 #profile {
   display: flex;
   justify-content: center;
   align-items: center; /* Added to ensure vertical centering */
   gap: 5rem;
-  height: 90vh; /* Increased from 80vh to 90vh to use more vertical space */
+  height: 70vh; /* Increased from 80vh to 90vh to use more vertical space */
   margin-top: -2vh; /* Negative margin to pull content up */
 }
 
@@ -191,29 +235,8 @@ section {
   font-weight: 600;
 }
 
-/* Center section titles and intro text */
 .section__text__p1 {
-    text-align: center;
-    width: 100%;
-    display: block;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.title {
-    text-align: center;
-    width: 100%;
-    margin: 0 auto 2rem auto;
-    font-size: 2.5rem;
-    font-weight: 600;
-}
-
-/* Adjust section container for better alignment */
-.section-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
+  text-align: center;
 }
 
 .section__text__p2 {
@@ -221,21 +244,17 @@ section {
   margin-bottom: 1rem;
 }
 
-/* Update the title styling */
 .title {
-    font-size: 2rem;
-    text-align: center;
-    letter-spacing: -0.05em; /* Reduce space between characters */
-    font-weight: 400;
-    margin: 0 auto 2rem auto;
-    width: 100%;
+  font-size: 3rem;
+  text-align: center;
+  letter-spacing: normal;  /* Added this line to remove extra spacing */
 }
 
-/* Specific styling for profile section title */
+/* For the profile section title specifically */
 #profile .title {
-    letter-spacing: -0.05em;
-    font-size: 3.5rem; /* Made slightly larger for better impact */
-    margin-bottom: 1rem;
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;  /* Slightly tighter spacing for the name */
+  font-weight: 600;
 }
 
 #socials-container {
@@ -432,10 +451,17 @@ section {
 
 .about-containers {
   display: flex;
-  flex-direction: row; /* Make containers side by side */
+  flex-direction: row;
   gap: 2rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
+}
+
+/* Skills section specific - 2x2 grid */
+.skills-details-container .about-containers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
 /* Keep the vertical layout for skills within each container */
@@ -508,6 +534,151 @@ article .icon {
 .project-btn {
   color: black;
   border-color: rgb(163, 163, 163);
+}
+
+/* CERTIFICATES SECTION */
+
+#certificates {
+  position: relative;
+}
+
+.certificates-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.certificate-card {
+  background: white;
+  border-radius: 2rem;
+  border: rgb(163, 163, 163) 0.1rem solid;
+  padding: 1.5rem;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.certificate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.certificate-card:hover .certificate-img {
+  transform: scale(1.05);
+}
+
+.certificate-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: rgb(53, 53, 53);
+}
+
+.certificate-issuer {
+  font-size: 1rem;
+  color: rgb(85, 85, 85);
+  margin-bottom: 0.25rem;
+}
+
+.certificate-date {
+  font-size: 0.9rem;
+  color: rgb(115, 115, 115);
+  font-style: italic;
+}
+
+/* Certificate Modal */
+.certificate-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  animation: fadeIn 0.3s ease;
+}
+
+.certificate-modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#certificateModalCaption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.certificate-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.certificate-modal-close:hover,
+.certificate-modal-close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .certificate-modal-content {
+    max-width: 95%;
+  }
+  
+  .certificate-modal-close {
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+  }
 }
 
 /* CONTACT */
@@ -595,53 +766,11 @@ footer p {
   align-items: center;
 }
 
-/* Contact section styling */
+/* Contact Form Styles */
 .contact-form-container {
-    background: white;
-    border-radius: 2rem;
-    border: rgb(163, 163, 163) 0.1rem solid;
-    padding: 3.5rem;
-    margin: 2rem auto;
-    max-width: 800px;
-    width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.form-group {
-    margin-bottom: 2rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid rgb(163, 163, 163);
-    border-radius: 1rem;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-}
-
-.form-group textarea {
-    min-height: 200px;
-    resize: vertical;
-}
-
-/* Contact info container */
-.contact-info-upper-container {
-    background: white;
-    border-radius: 2rem;
-    border: rgb(163, 163, 163) 0.1rem solid;
-    padding: 2.5rem;
-    margin: 2rem auto;
     max-width: 600px;
-    width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.contact-info-upper-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    margin: 2rem auto;
+    padding: 2rem;
 }
 
 .form-group {
@@ -652,9 +781,11 @@ footer p {
 .form-group textarea {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid rgb(163, 163, 163);
-    border-radius: 0.8rem;
-    font-family: "Poppins", sans-serif;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--container-bg);
+    color: var(--primary-color);
+    font-family: inherit;
 }
 
 .form-group textarea {
@@ -666,4 +797,96 @@ footer p {
 .form-group textarea:focus {
     outline: none;
     border-color: #555;
+}
+
+/* Career Objective styling */
+.career-objective {
+    background-color: rgba(245, 245, 245, 0.8);
+    border-left: 4px solid #333;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.career-objective h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.career-objective p {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+    .career-objective {
+        padding: 0.8rem 1rem;
+    }
+    
+    .career-objective h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* About section title styling */
+.about-title-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Experience and Education cards */
+.info-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 300px;
+}
+
+.info-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.info-card p {
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    .info-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-card {
+        width: 100%;
+        max-width: none;
+    }
+
+    .about-title {
+        font-size: 2rem;
+    }
 }
